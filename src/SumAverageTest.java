@@ -15,10 +15,13 @@ public class SumAverageTest {
   @DataProvider(name = "Sum")
   public static Object[][] sum() {
     return new Object[][]{
-        {1, 100, 5050},
-        {-100, 100, 0},
-        {1, 1, 1}
-        // TODO add 2 more test data here
+            {1, 100, 5050},
+            {-100, 100, 0},
+            {1, 1, 1},
+            //    {100, 1, 5050}, - recommended to add this test, but the test framework throws ArrayIndexOutOfBoundsException
+            {-100, -1, -5050},
+            {0, 0, 0}
+
     };
   }
 
@@ -30,10 +33,12 @@ public class SumAverageTest {
   @DataProvider(name = "Average")
   public static Object[][] average() {
     return new Object[][]{
-        {1, 100, 50.5},
-        {-100, 100, 0.0},
-        {1, 1, 1.0}
-        // TODO add 2 more test data here
+            {1, 100, 50.5},
+            {-100, 100, 0.0},
+            {1, 1, 1.0},
+            //   {100, 1, 50.5} - recommended to add this test, but the test framework throws ArrayIndexOutOfBoundsException
+            {-100, -1, -50.5},
+            {0,0,0}
     };
   }
 

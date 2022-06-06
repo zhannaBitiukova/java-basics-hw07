@@ -1,51 +1,73 @@
-/**
- * Compute the sum and average for running integers using loop.
- */
 public class SumAverage {
 
-  /**
-   * Computes sum of running integers from a lower bound to an upper bound.
-   *
-   * @param lowerBound lower bound
-   * @param upperBound upper bound
-   * @return sum of integers
-   */
+  private static int minBound = Integer.MAX_VALUE;
+  private static int maxBound = Integer.MIN_VALUE;
+
+  private static void setBounds(int firstBound, int secondBound) {
+    if (firstBound < secondBound) {
+      minBound = firstBound;
+      maxBound = secondBound;
+    } else {
+      minBound = secondBound;
+      maxBound = firstBound;
+    }
+  }
+
+  private static void setBounds(int[] numbers) {
+    minBound = numbers[0];
+    maxBound = numbers[0];
+
+    for (int number : numbers) {
+      if (minBound > number) {
+        minBound = number;
+      }
+      if (maxBound < number) {
+        maxBound = number;
+      }
+    }
+  }
+
   public static int sum(int lowerBound, int upperBound) {
-    // TODO fill in code here using for loop and replace the return statement
-    return -1;
+    setBounds(lowerBound, upperBound);
+    int sum = 0;
+    for (int i = minBound; i <= maxBound; i++){
+      sum += i;
+    }
+    return sum;
   }
 
-  /**
-   * Computes sum of running integers from a lower bound to an upper bound within an array.
-   *
-   * @param numbers running integers array
-   * @return sum of integers
-   */
   public static int sum(int[] numbers) {
-    // TODO fill in code here using for each loop and replace the return statement
-    return -1;
+    setBounds(numbers);
+    int sum = 0;
+    for (int number : numbers) {
+      sum += number;
+    }
+    return sum;
   }
 
-  /**
-   * Computes average of running integers from a lower bound to an upper bound.
-   *
-   * @param lowerBound lower bound
-   * @param upperBound upper bound
-   * @return average of integers
-   */
   public static double average(int lowerBound, int upperBound) {
-    // TODO fill in code here using while loop and replace the return statement
-    return -1;
+    setBounds(lowerBound, upperBound);
+    double average;
+    double sum = 0.0;
+    int i = minBound;
+    while (i <= maxBound) {
+      sum += i;
+      i++;
+    }
+    average = sum / Math.abs(maxBound - minBound + 1);
+    return average;
   }
 
-  /**
-   * Computes average of running integers from a lower bound to an upper bound within an array.
-   *
-   * @param numbers running integers array
-   * @return average of integers
-   */
   public static double average(int[] numbers) {
-    // TODO fill in code here using do-while loop and replace the return statement
-    return -1;
+    double average;
+    double sum = 0.0;
+    int i = 1;
+    do {
+      sum += numbers[i-1];
+      i++;
+    }
+    while (i <= numbers.length);
+    average = sum / (i - 1);
+    return average;
   }
 }
